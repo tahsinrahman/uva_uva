@@ -21,6 +21,8 @@ void remove_path(int source)
 
 int dijkstra(int source, int destination)
 {
+	vector <int> vis(n);
+
 	for(int i = 0; i < n; i++) dis[i] = INT_MAX;
 	dis[source] = 0;
 
@@ -38,6 +40,9 @@ int dijkstra(int source, int destination)
 		int ucost = dis[u.city];
 
 		if(u.city == destination) return ucost;
+
+		if(vis[u.city]) continue;
+		vis[u.city] = 1;
 
 		for(int i = 0; i < n; i++) {
 			if(!graph[u.city][i]) continue;
