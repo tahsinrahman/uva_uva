@@ -53,18 +53,6 @@ void dijkstra(int src, int des)
 	}
 }
 
-void path(int u, int v)
-{
-	if(u == v) printf("%d", v);
-	else {
-		path(parent[u], v);
-		printf(" %d", u);
-	}
-}
-
-
-	
-
 int main()
 {
 	int m, u, v, cs = 0;
@@ -77,8 +65,8 @@ int main()
 
 			while(m--) {
 				scanf("%d%d", &u, &v);
-				edge[i].push_back(u);
-				cost[i].push_back(v);
+				edge[u].push_back(i);
+				cost[u].push_back(v);
 			}
 		}
 
@@ -86,8 +74,14 @@ int main()
 
 		printf("Case %d: Path = ", ++cs);
 
-		dijkstra(u, v);
-		path(v, u);
+		dijkstra(v, u);
+		parent[v] = v;
+		while(u != v) {
+			printf("%d ", u);
+			u = parent[u];
+		}
+		printf("%d", v);
+
 		printf("; %d second delay\n", ans);
 
 		for(int i = 1; i <= n; i++) {
