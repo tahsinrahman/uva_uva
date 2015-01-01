@@ -12,8 +12,9 @@ int main()
 	while(n || m || q) {
 		if(!n && !m && !q) break;
 
-		int d[n+1][n+1];
-		memset(d, 0, sizeof(d));
+//		int d[n+1][n+1];
+//		memset(d, 0, sizeof(d));
+		vector < vector <int> > d(n+1, vector <int> (n+1));
 
 		while(m--) {
 			scanf("%d%d%d", &u, &v, &w);
